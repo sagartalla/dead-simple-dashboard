@@ -3,43 +3,53 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import thunkMiddleware from 'redux-thunk'
 
 const exampleInitialState = {
-  line: [
-    {
-      label: "Series 1",
-      data: [[0, 1], [1, 2], [2, 4], [3, 2], [4, 7]]
-    },
-    {
-      label: "Series 2",
-      data: [[0, 3], [1, 1], [2, 5], [3, 6], [4, 4]]
-    }
-  ],
-  bar: [
-    {
-      label: "Series 1",
-      data: [[0, 1], [1, 2]]
-    },
-    {
-      label: "Series 2",
-      data: [[0, 3], [1, 1]]
-    }
-  ],
-  area: [
-    {
-      label: "Series 1",
-      data: [[0, 1], [1, 2], [2, 4], [3, 2], [4, 7]]
-    },
-    {
-      label: "Series 2",
-      data: [[0, 3], [1, 1], [2, 5], [3, 6], [4, 4]]
-    }
-  ]
+  line: {
+    graph: [
+      {
+        label: "Series 1",
+        data: [[0, 1], [1, 2], [2, 4], [3, 2], [4, 7]]
+      },
+      {
+        label: "Series 2",
+        data: [[0, 3], [1, 1], [2, 5], [3, 6], [4, 4]]
+      }
+    ],
+    title: 'Line',
+  },
+  bar: {
+    graph: [
+      {
+        label: "Series 1",
+        data: [[0, 1], [1, 2]]
+      },
+      {
+        label: "Series 2",
+        data: [[0, 3], [1, 1]]
+      }
+    ],
+    title: 'bar',
+  },
+  area: {
+    graph: [
+      {
+        label: "Series 1",
+        data: [[0, 1], [1, 2], [2, 4], [3, 2], [4, 7]]
+      },
+      {
+        label: "Series 2",
+        data: [[0, 3], [1, 1], [2, 5], [3, 6], [4, 4]]
+      }
+    ],
+    title: 'area',
+  }
 }
 
 export const actionTypes = {
   TICK: 'TICK',
   INCREMENT: 'INCREMENT',
   DECREMENT: 'DECREMENT',
-  RESET: 'RESET'
+  RESET: 'RESET',
+  SAVE_DATA: 'SAVE_DATA',
 }
 
 // REDUCERS
@@ -62,6 +72,15 @@ export const reducer = (state = exampleInitialState, action) => {
       return Object.assign({}, state, {
         count: exampleInitialState.count
       })
+    case actionTypes.SAVE_DATA:
+      return {
+        ...state,
+        [action.payload.type]: {
+          ...state[action.payload.type],
+          title: action.payload.data.title,
+          graph: action.payload.data.graph,
+        }
+      }
     default: return state
   }
 }
@@ -88,6 +107,10 @@ export const decrementCount = () => dispatch => {
 
 export const resetCount = () => dispatch => {
   return dispatch({ type: actionTypes.RESET })
+}
+
+export const saveData = (data) => {
+  return {type: actionTypes.SAVE_DATA, payload: data}
 }
 
 export function initializeStore (initialState = exampleInitialState) {

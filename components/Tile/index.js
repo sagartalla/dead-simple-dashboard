@@ -14,7 +14,6 @@ class Tile extends Component {
     super(props);
     this.state = {
       edit: false,
-      title: 'test title',
       showModal: false,
     }
     this.handleChange = this.handleChange.bind(this);
@@ -56,10 +55,9 @@ class Tile extends Component {
 
   render() {
     const {i, type} = this.props;
-    const { edit, title } = this.state;
+    const { edit } = this.state;
     return (
       <div>
-        <span className='tile-title'>{title}</span>
         <div>
           {
             (() => {
@@ -77,7 +75,7 @@ class Tile extends Component {
           this.state.showModal ?
             <div>
               <Modal className={`react-router-modal__modal`} onBackdropClick={this.modalToggle}>
-                <Popup type={this.props.type} />
+                <Popup type={this.props.type} close={this.modalToggle}/>
               </Modal>
             </div> : null
         }

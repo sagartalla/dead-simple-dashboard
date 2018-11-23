@@ -1,7 +1,9 @@
 import React from "react";
 import { Chart } from "react-charts";
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-const BarChart = () => {
+const BarChart = (props) => {
   return (
     <div
       style={{
@@ -9,17 +11,9 @@ const BarChart = () => {
         height: "300px"
       }}
     >
+      <span className='tile-title'>{props.data.title}</span>
       <Chart
-        data={[
-          {
-            label: "Series 1",
-            data: [[0, 1], [1, 2]]
-          },
-          {
-            label: "Series 2",
-            data: [[0, 3], [1, 1]]
-          }
-        ]}
+        data={props.data.graph}
         series={{ type: 'bar' }}
         axes={[
           { primary: true, type: "linear", position: "bottom" },
@@ -31,5 +25,10 @@ const BarChart = () => {
 };
 
 
+const mapStateToProps = (store) => {
+  return ({
+    data: store.bar
+  })
+};
 
-export default BarChart;
+export default connect(mapStateToProps, null)(BarChart);

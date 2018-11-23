@@ -11,8 +11,9 @@ const lineChart = (props) => {
         height: "300px"
       }}
     >
+      <span className='tile-title'>{props.data.title}</span>
       <Chart
-        data={props.data}
+        data={props.data.graph}
         axes={[
           { primary: true, type: "linear", position: "bottom" },
           { type: "linear", position: "left" }
@@ -29,5 +30,3 @@ const mapStateToProps = (store) => {
 };
 
 export default connect(mapStateToProps, null)(lineChart);
-
-// export default lineChart;
