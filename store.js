@@ -3,9 +3,36 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import thunkMiddleware from 'redux-thunk'
 
 const exampleInitialState = {
-  lastUpdate: 0,
-  light: false,
-  count: 0
+  line: [
+    {
+      label: "Series 1",
+      data: [[0, 1], [1, 2], [2, 4], [3, 2], [4, 7]]
+    },
+    {
+      label: "Series 2",
+      data: [[0, 3], [1, 1], [2, 5], [3, 6], [4, 4]]
+    }
+  ],
+  bar: [
+    {
+      label: "Series 1",
+      data: [[0, 1], [1, 2]]
+    },
+    {
+      label: "Series 2",
+      data: [[0, 3], [1, 1]]
+    }
+  ],
+  area: [
+    {
+      label: "Series 1",
+      data: [[0, 1], [1, 2], [2, 4], [3, 2], [4, 7]]
+    },
+    {
+      label: "Series 2",
+      data: [[0, 3], [1, 1], [2, 5], [3, 6], [4, 4]]
+    }
+  ]
 }
 
 export const actionTypes = {

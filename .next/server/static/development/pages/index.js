@@ -277,6 +277,71 @@ function mapStateToProps(state) {
 
 /***/ }),
 
+/***/ "./components/Popup/index.js":
+/*!***********************************!*\
+  !*** ./components/Popup/index.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _jsxFileName = "/Users/sagar/Desktop/sagar/repo/recko/dashboard/components/Popup/index.js";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var Popup =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Popup, _Component);
+
+  function Popup() {
+    _classCallCheck(this, Popup);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Popup).apply(this, arguments));
+  }
+
+  _createClass(Popup, [{
+    key: "render",
+    value: function render() {
+      var type = this.props.type;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 7
+        },
+        __self: this
+      }, type);
+    }
+  }]);
+
+  return Popup;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (Popup);
+
+/***/ }),
+
 /***/ "./components/Tile/graphs/area.js":
 /*!****************************************!*\
   !*** ./components/Tile/graphs/area.js ***!
@@ -408,11 +473,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_charts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-charts */ "react-charts");
 /* harmony import */ var react_charts__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_charts__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux */ "redux");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_3__);
 var _jsxFileName = "/Users/sagar/Desktop/sagar/repo/recko/dashboard/components/Tile/graphs/line.js";
 
 
 
-var lineChart = function lineChart() {
+
+
+var lineChart = function lineChart(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
       width: "400px",
@@ -420,17 +491,11 @@ var lineChart = function lineChart() {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 6
+      lineNumber: 8
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_charts__WEBPACK_IMPORTED_MODULE_1__["Chart"], {
-    data: [{
-      label: "Series 1",
-      data: [[0, 1], [1, 2], [2, 4], [3, 2], [4, 7]]
-    }, {
-      label: "Series 2",
-      data: [[0, 3], [1, 1], [2, 5], [3, 6], [4, 4]]
-    }],
+    data: props.data,
     axes: [{
       primary: true,
       type: "linear",
@@ -441,13 +506,19 @@ var lineChart = function lineChart() {
     }],
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12
+      lineNumber: 14
     },
     __self: this
   }));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (lineChart);
+var mapStateToProps = function mapStateToProps(store) {
+  return {
+    data: store.line
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, null)(lineChart)); // export default lineChart;
 
 /***/ }),
 
@@ -462,11 +533,14 @@ var lineChart = function lineChart() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _graphs_line__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./graphs/line */ "./components/Tile/graphs/line.js");
-/* harmony import */ var _graphs_bar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./graphs/bar */ "./components/Tile/graphs/bar.js");
-/* harmony import */ var _graphs_area__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./graphs/area */ "./components/Tile/graphs/area.js");
-/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./styles.css */ "./components/Tile/styles.css");
-/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_styles_css__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_router_modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-modal */ "react-router-modal");
+/* harmony import */ var react_router_modal__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_router_modal__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _graphs_line__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./graphs/line */ "./components/Tile/graphs/line.js");
+/* harmony import */ var _graphs_bar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./graphs/bar */ "./components/Tile/graphs/bar.js");
+/* harmony import */ var _graphs_area__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./graphs/area */ "./components/Tile/graphs/area.js");
+/* harmony import */ var _Popup__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Popup */ "./components/Popup/index.js");
+/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./styles.css */ "./components/Tile/styles.css");
+/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_styles_css__WEBPACK_IMPORTED_MODULE_6__);
 var _jsxFileName = "/Users/sagar/Desktop/sagar/repo/recko/dashboard/components/Tile/index.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -493,6 +567,8 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 
 
+
+
 var Tile =
 /*#__PURE__*/
 function (_Component) {
@@ -506,11 +582,14 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Tile).call(this, props));
     _this.state = {
       edit: false,
-      title: 'test title'
+      title: 'test title',
+      showModal: false
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.editModeOn = _this.editModeOn.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.editModeOff = _this.editModeOff.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.modalToggle = _this.modalToggle.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.openModal = _this.openModal.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -536,6 +615,20 @@ function (_Component) {
       });
     }
   }, {
+    key: "modalToggle",
+    value: function modalToggle() {
+      this.setState({
+        showModal: !this.state.showModal
+      });
+    }
+  }, {
+    key: "openModal",
+    value: function openModal() {
+      this.setState({
+        showModal: true
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
@@ -547,91 +640,90 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 41
+          lineNumber: 61
         },
         __self: this
-      }, edit ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        defaultValue: title,
-        onChange: this.handleChange,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 45
-        },
-        __self: this
-      }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "tile-title",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 47
+          lineNumber: 62
         },
         __self: this
-      }, title), "\xA0", edit ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "javascript:void(0)",
-        onClick: this.editModeOff,
+      }, title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 53
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 53
-        },
-        __self: this
-      }, "save")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "javascript:void(0)",
-        onClick: this.editModeOn,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 55
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 55
-        },
-        __self: this
-      }, "edit")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 57
+          lineNumber: 63
         },
         __self: this
       }, function () {
         return {
-          line: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_graphs_line__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          line: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_graphs_line__WEBPACK_IMPORTED_MODULE_2__["default"], {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 61
+              lineNumber: 67
             },
             __self: this
           }),
-          bar: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_graphs_bar__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          bar: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_graphs_bar__WEBPACK_IMPORTED_MODULE_3__["default"], {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 62
+              lineNumber: 68
             },
             __self: this
           }),
-          area: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_graphs_area__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          area: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_graphs_area__WEBPACK_IMPORTED_MODULE_4__["default"], {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 63
+              lineNumber: 69
             },
             __self: this
           }),
           none: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 64
+              lineNumber: 70
             },
             __self: this
           }, "none")
         }[type];
-      }()));
+      }()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tile-edit-btn",
+        onClick: this.openModal,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 75
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "javascript:void(0)",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 75
+        },
+        __self: this
+      }, "edit")), this.state.showModal ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 78
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_modal__WEBPACK_IMPORTED_MODULE_1__["Modal"], {
+        className: "react-router-modal__modal",
+        onBackdropClick: this.modalToggle,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 79
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Popup__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        type: this.props.type,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 80
+        },
+        __self: this
+      }))) : null);
     }
   }]);
 
@@ -666,8 +758,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "react-redux");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store */ "./store.js");
-/* harmony import */ var _components_Dashboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Dashboard */ "./components/Dashboard/index.js");
+/* harmony import */ var react_router_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-modal */ "react-router-modal");
+/* harmony import */ var react_router_modal__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_router_modal__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store */ "./store.js");
+/* harmony import */ var _components_Dashboard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Dashboard */ "./components/Dashboard/index.js");
 var _jsxFileName = "/Users/sagar/Desktop/sagar/repo/recko/dashboard/pages/index.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -693,6 +787,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var Index =
 /*#__PURE__*/
 function (_React$Component) {
@@ -706,26 +801,26 @@ function (_React$Component) {
 
   _createClass(Index, [{
     key: "render",
-    // static getInitialProps ({ reduxStore, req }) {
-    //   const isServer = !!req
-    //   reduxStore.dispatch(serverRenderClock(isServer))
-    //   return {}
-    // }
-    // componentDidMount () {
-    //   const {dispatch} = this.props
-    //   this.timer = startClock(dispatch)
-    // }
-    // componentWillUnmount () {
-    //   clearInterval(this.timer)
-    // }
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Dashboard__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 24
+          lineNumber: 11
         },
         __self: this
-      });
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Dashboard__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 12
+        },
+        __self: this
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_modal__WEBPACK_IMPORTED_MODULE_2__["ModalContainer"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 13
+        },
+        __self: this
+      }));
     }
   }]);
 
@@ -763,9 +858,27 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var exampleInitialState = {
-  lastUpdate: 0,
-  light: false,
-  count: 0
+  line: [{
+    label: "Series 1",
+    data: [[0, 1], [1, 2], [2, 4], [3, 2], [4, 7]]
+  }, {
+    label: "Series 2",
+    data: [[0, 3], [1, 1], [2, 5], [3, 6], [4, 4]]
+  }],
+  bar: [{
+    label: "Series 1",
+    data: [[0, 1], [1, 2]]
+  }, {
+    label: "Series 2",
+    data: [[0, 3], [1, 1]]
+  }],
+  area: [{
+    label: "Series 1",
+    data: [[0, 1], [1, 2], [2, 4], [3, 2], [4, 7]]
+  }, {
+    label: "Series 2",
+    data: [[0, 3], [1, 1], [2, 5], [3, 6], [4, 4]]
+  }]
 };
 var actionTypes = {
   TICK: 'TICK',
@@ -916,6 +1029,17 @@ module.exports = require("react-grid-layout");
 /***/ (function(module, exports) {
 
 module.exports = require("react-redux");
+
+/***/ }),
+
+/***/ "react-router-modal":
+/*!*************************************!*\
+  !*** external "react-router-modal" ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-router-modal");
 
 /***/ }),
 
