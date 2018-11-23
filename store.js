@@ -3,7 +3,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import thunkMiddleware from 'redux-thunk'
 
 const exampleInitialState = {
-  line: {
+  g1: {
     graph: [
       {
         label: "Series 1",
@@ -15,8 +15,9 @@ const exampleInitialState = {
       }
     ],
     title: 'Line',
+    type: 'line',
   },
-  bar: {
+  g2: {
     graph: [
       {
         label: "Series 1",
@@ -28,8 +29,9 @@ const exampleInitialState = {
       }
     ],
     title: 'bar',
+    type: 'bar',
   },
-  area: {
+  g3: {
     graph: [
       {
         label: "Series 1",
@@ -41,6 +43,7 @@ const exampleInitialState = {
       }
     ],
     title: 'area',
+    type: 'area',
   }
 }
 
@@ -55,30 +58,14 @@ export const actionTypes = {
 // REDUCERS
 export const reducer = (state = exampleInitialState, action) => {
   switch (action.type) {
-    case actionTypes.TICK:
-      return Object.assign({}, state, {
-        lastUpdate: action.ts,
-        light: !!action.light
-      })
-    case actionTypes.INCREMENT:
-      return Object.assign({}, state, {
-        count: state.count + 1
-      })
-    case actionTypes.DECREMENT:
-      return Object.assign({}, state, {
-        count: state.count - 1
-      })
-    case actionTypes.RESET:
-      return Object.assign({}, state, {
-        count: exampleInitialState.count
-      })
     case actionTypes.SAVE_DATA:
       return {
         ...state,
-        [action.payload.type]: {
-          ...state[action.payload.type],
+        [action.payload.id]: {
+          ...state[action.payload.id],
           title: action.payload.data.title,
           graph: action.payload.data.graph,
+          type: action.payload.data.type
         }
       }
     default: return state
@@ -86,29 +73,6 @@ export const reducer = (state = exampleInitialState, action) => {
 }
 
 // ACTIONS
-export const serverRenderClock = (isServer) => dispatch => {
-  return dispatch({ type: actionTypes.TICK, light: !isServer, ts: Date.now() })
-}
-
-export const startClock = dispatch => {
-  return setInterval(() => {
-    // Dispatch `TICK` every 1 second
-    dispatch({ type: actionTypes.TICK, light: true, ts: Date.now() })
-  }, 1000)
-}
-
-export const incrementCount = () => dispatch => {
-  return dispatch({ type: actionTypes.INCREMENT })
-}
-
-export const decrementCount = () => dispatch => {
-  return dispatch({ type: actionTypes.DECREMENT })
-}
-
-export const resetCount = () => dispatch => {
-  return dispatch({ type: actionTypes.RESET })
-}
-
 export const saveData = (data) => {
   return {type: actionTypes.SAVE_DATA, payload: data}
 }

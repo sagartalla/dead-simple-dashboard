@@ -19,7 +19,7 @@ class Dashboard extends Component {
       y: 3,
       onLayoutChange: function() {},
       cols: 12,
-      graphs: ['bar', 'line', 'area']
+      graphs: ['g1', 'g2', 'g3']
     };
 
     constructor(props) {
@@ -34,7 +34,7 @@ class Dashboard extends Component {
       return _.map(_.range(this.props.items), function(i) {
         return (
           <div key={i}>
-            <Tile i={i} type={graphs[i] || 'none'}/>
+            <Tile i={i} id={graphs[i] || 'none'}/>
           </div>
         );
       });

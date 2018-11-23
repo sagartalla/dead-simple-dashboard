@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { Modal } from "react-router-modal";
 
-import LineChart from './graphs/line';
-import BarChart from './graphs/bar';
-import AreaChart from './graphs/area';
+import GraphCompoent from './graphs';
 
 import Popup from '../Popup';
 
@@ -54,28 +52,32 @@ class Tile extends Component {
   }
 
   render() {
-    const {i, type} = this.props;
+    const { i, id } = this.props;
     const { edit } = this.state;
     return (
       <div>
         <div>
           {
-            (() => {
-                return {
-                  line: <LineChart />,
-                  bar: <BarChart />,
-                  area: <AreaChart />,
-                  none: <div>none</div>
-                }[type]
-            })()
+            id !== 'none'
+            ?
+            <GraphCompoent id={id} />
+            :
+            null
           }
+
         </div>
-        <div className='tile-edit-btn' onClick={this.openModal}><a href="javascript:void(0)">edit</a></div>
+        {
+          id !== 'none'
+          ?
+          <div className='tile-edit-btn' onClick={this.openModal}><a href="javascript:void(0)">edit</a></div>
+          :
+          null
+        }
         {
           this.state.showModal ?
             <div>
               <Modal className={`react-router-modal__modal`} onBackdropClick={this.modalToggle}>
-                <Popup type={this.props.type} close={this.modalToggle}/>
+                <Popup id={id} close={this.modalToggle}/>
               </Modal>
             </div> : null
         }

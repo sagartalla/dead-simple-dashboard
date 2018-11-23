@@ -3,7 +3,8 @@ import { Chart } from "react-charts";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-const BarChart = (props) => {
+const GraphCompoent = (props) => {
+  const { id } = props;
   return (
     <div
       style={{
@@ -13,8 +14,8 @@ const BarChart = (props) => {
     >
       <span className='tile-title'>{props.data.title}</span>
       <Chart
-        data={props.data.graph}
-        series={{ type: 'bar' }}
+        data={props.data[id].graph}
+        series={{ type: props.data[id].type }}
         axes={[
           { primary: true, type: "linear", position: "bottom" },
           { type: "linear", position: "left" }
@@ -27,8 +28,8 @@ const BarChart = (props) => {
 
 const mapStateToProps = (store) => {
   return ({
-    data: store.bar
+    data: store
   })
 };
 
-export default connect(mapStateToProps, null)(BarChart);
+export default connect(mapStateToProps, null)(GraphCompoent);
